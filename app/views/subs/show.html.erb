@@ -1,0 +1,12 @@
+Welcome to <%= @sub.title %>'s page!
+<br>
+This sub is all about: <%= @sub.description %>
+<br>
+Moderator: <%= @sub.moderator.username %>
+<br>
+<br>
+Posts:
+  <%= render template: 'posts/index' %>
+<% if logged_in? %>
+  <%= link_to "Make a Post", new_sub_post_url(@sub) %>
+<% end %>

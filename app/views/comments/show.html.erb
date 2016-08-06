@@ -1,0 +1,4 @@
+<%= @comment.content %>
+<br>
+<input type="hidden" name="comment[parent_comment_id]" value="<%= @comment.id %>">
+<%= link_to "Create Comment", new_comment_url %>

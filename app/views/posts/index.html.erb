@@ -1,0 +1,13 @@
+<ol>
+  <% @posts.each do |post| %>
+      <li>
+        Title: <%= link_to "#{post.title}", sub_post_url(@sub.id, post) %>
+        <br>
+        Posted by: <%= post.user.username %>
+        <% if current_user.id == post.user.id %>
+          <%= button_to "Edit Post", edit_post_url(post), method: :get%>
+        <% end %>
+      </li>
+        <br>
+  <% end %>
+</ol>

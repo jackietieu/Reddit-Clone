@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Reddit</title>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <% if logged_in? %>
+    <%= "Welcome #{current_user.username}!" %>
+    <%= button_to "Log out", session_url, method: :delete %>
+    <br>
+  <% elsif request.url != new_session_url %>
+    <%= button_to "Log in", new_session_url, method: :get %>
+    <br>
+  <% end %>
+<%= yield %>
+
+  <footer>
+      <%= link_to "Subs Index", subs_url %>
+  </footer>
+</body>
+</html>

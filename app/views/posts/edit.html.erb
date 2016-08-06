@@ -1,0 +1,15 @@
+<form action="<%= post_url(@post) %>" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <%= auth_token %>
+  Title<input type="text" name="post[title]" value="<%= @post.title %>">
+  <br>
+  Content <textarea name="post[content]" rows="8" cols="40"><%= @post.content %></textarea>
+  <br>
+  Subs:
+  <br>
+  <% Sub.all.each do |sub| %>
+    <%= sub.title %><input type="checkbox" name="post[sub_ids][]" value="<%= sub.id %>" <%= "checked" if @post.sub_ids.include?(sub.id) %>>
+    <br>
+  <% end %>
+  <input type="submit" value="Submit">
+</form>

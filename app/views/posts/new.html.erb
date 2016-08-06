@@ -1,0 +1,14 @@
+<form action="<%= sub_posts_url %>" method="post">
+  <%= auth_token %>
+  Title<input type="text" name="post[title]">
+  <br>
+  Content <textarea name="post[content]" rows="8" cols="40"></textarea>
+  <br>
+  Subs:
+  <br>
+  <% Sub.all.each do |sub| %>
+    <%= sub.title %><input type="checkbox" name="post[sub_ids][]" value="<%= sub.id %>">
+    <br>
+  <% end %>
+  <input type="submit" value="Submit">
+</form>

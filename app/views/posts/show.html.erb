@@ -1,0 +1,18 @@
+Title: <%= @post.title %>
+<br>
+Content: <%= @post.content %>
+<br>
+<br>
+Comments:
+<ol>
+  <% @post.comments.each do |comment| %>
+    <li>
+      <%= comment.content %>
+      <br>
+      <%= link_to "Comment On This Comment", comment_url(comment) %>
+    </li>
+    <br>
+  <% end %>
+</ol>
+
+<%= button_to "Create Comment On Post", { controller: "comments", action: "new", sub_id: params[:sub_id], post_id: params[:id] }, method: :get %>
